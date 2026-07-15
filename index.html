@@ -33,14 +33,18 @@
   .menu-links{display:flex;gap:18px;align-items:center}
   @media(max-width:720px){.menu-links{display:none}.brand small{display:none}}
 
-  .hero{padding:80px 0 58px;background:
-     radial-gradient(1100px 420px at 82% -60px,var(--brand-soft),transparent)}
-  .hero h1{font-size:38px;line-height:1.18;letter-spacing:-.4px;color:var(--brand);margin-bottom:14px}
-  .hero p.lead{font-size:18px;color:var(--muted);max-width:660px}
+  .hero{position:relative;padding:96px 0 84px;overflow:hidden;
+    background:#0a1f18 url("images/hero.jpg") center 30%/cover no-repeat}
+  .hero::before{content:"";position:absolute;inset:0;
+    background:linear-gradient(90deg,rgba(8,26,20,.92),rgba(8,26,20,.66) 55%,rgba(8,26,20,.35))}
+  .hero .wrap{position:relative}
+  .hero h1{font-size:40px;line-height:1.18;letter-spacing:-.4px;color:#fff;margin-bottom:14px}
+  .hero p.lead{font-size:18px;color:#dcefe6;max-width:660px}
   .hero .kicker{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.09em;
-    text-transform:uppercase;color:var(--accent);margin-bottom:14px}
-  .recruit{margin-top:22px;display:inline-block;background:var(--brand-soft);color:var(--brand);
-    border:1px solid #cfe8db;border-radius:10px;padding:10px 16px;font-size:14px;font-weight:600}
+    text-transform:uppercase;color:#7ee0ad;margin-bottom:14px}
+  .recruit{margin-top:24px;display:inline-block;background:rgba(255,255,255,.12);color:#eafff5;
+    border:1px solid rgba(126,224,173,.4);border-radius:10px;padding:11px 16px;font-size:14px;font-weight:600;
+    backdrop-filter:blur(4px)}
 
   section{padding:52px 0;border-top:1px solid var(--line)}
   section h2{font-size:26px;letter-spacing:-.3px;color:var(--brand);margin-bottom:8px}
@@ -52,8 +56,9 @@
 
   /* Professor */
   .prof{display:grid;grid-template-columns:96px 1fr;gap:20px;align-items:start}
-  .prof .ava{width:96px;height:96px;border-radius:16px;background:var(--brand-soft);
-    display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--brand);font-size:30px}
+  .prof .ava{position:relative;width:96px;height:96px;border-radius:16px;background:var(--brand-soft);
+    display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--brand);font-size:30px;overflow:hidden}
+  .prof .ava img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .prof h3{font-size:20px;color:var(--brand)}
   .prof .pos{color:var(--muted);font-size:14px;margin:2px 0 10px}
   .prof .meta{font-size:13.5px;color:var(--muted);line-height:1.9}
@@ -63,8 +68,9 @@
 
   /* Members */
   .members{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
-  .mcard .av{width:50px;height:50px;border-radius:50%;background:var(--brand-soft);
-    display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--brand);font-size:18px;margin-bottom:11px}
+  .mcard .av{position:relative;width:56px;height:56px;border-radius:50%;background:var(--brand-soft);
+    display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--brand);font-size:18px;margin-bottom:11px;overflow:hidden}
+  .mcard .av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .mcard .name{font-weight:700;font-size:15.5px}
   .mcard .role{color:var(--accent);font-size:12.5px;margin-top:3px;font-weight:600}
   .mcard .mail{font-size:12px;color:var(--muted);margin-top:5px;word-break:break-all}
@@ -88,6 +94,20 @@
   .pub .yr{color:var(--brand2);font-weight:700}
   .more{margin-top:14px;font-size:13.5px;color:var(--muted)}
 
+  /* Gallery */
+  .gallery{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+  .gitem{position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;
+    border:1px solid var(--line);background:var(--brand-soft)}
+  .gitem img{width:100%;height:100%;object-fit:cover;display:block}
+  .gitem .cap{position:absolute;left:0;right:0;bottom:0;padding:8px 10px;font-size:12.5px;
+    color:#fff;background:linear-gradient(transparent,rgba(15,61,46,.72))}
+
+  /* Supporters */
+  .suplogos{display:flex;flex-wrap:wrap;align-items:center;gap:34px}
+  .suplogos img{height:52px;width:auto;object-fit:contain;filter:grayscale(.2);opacity:.9}
+  .suplogos img:hover{filter:none;opacity:1}
+  @media(max-width:560px){.suplogos{gap:22px}.suplogos img{height:40px}}
+
   footer{border-top:1px solid var(--line);padding:38px 0;color:var(--muted);font-size:14px}
   footer .row{display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between}
 
@@ -107,6 +127,7 @@
       <a class="link" href="#research"><span data-ko>연구</span><span data-en>Research</span></a>
       <a class="link" href="#projects"><span data-ko>프로젝트</span><span data-en>Projects</span></a>
       <a class="link" href="#pubs"><span data-ko>논문</span><span data-en>Publications</span></a>
+      <a class="link" href="#gallery"><span data-ko>활동</span><span data-en>Gallery</span></a>
     </nav>
     <button class="langbtn" id="lang" onclick="toggleLang()">EN</button>
   </div>
@@ -161,22 +182,23 @@
 
     <div class="card" style="margin-bottom:22px">
       <div class="prof">
-        <div class="ava">YY</div>
+        <div class="ava">YY<img src="images/prof.jpg" alt="Yeuntae Yoo" onerror="this.remove()"></div>
         <div>
           <h3>Yeuntae Yoo, Ph.D. <span data-ko>(유연태)</span></h3>
           <div class="pos"><span data-ko>부교수 · 명지대학교 전기공학과</span><span data-en>Associate Professor · Dept. of Electrical Engineering, Myongji University</span></div>
           <div class="meta">
             Tel: +82-31-330-6366 &nbsp;·&nbsp; Email: <a href="mailto:ytyoo@mju.ac.kr">ytyoo@mju.ac.kr</a><br>
-            <span data-ko>학력: 고려대학교 전기공학 학사·박사 (전력시스템) · BK21 연구교수(2020)</span>
-            <span data-en>Education: B.S. &amp; Ph.D. in Electrical Engineering (Power Systems), Korea University · Research Professor, BK21 (2020)</span><br>
-            <span data-ko>경력: UC San Diego Qualcomm Institute 박사후연구원 (2021–2022)</span>
-            <span data-en>Experience: Postdoctoral Researcher, Qualcomm Institute, UC San Diego (2021–2022)</span>
+            <span data-ko><b>경력</b> · 명지대학교 전기공학과 부교수 (2022.03–현재) · UC San Diego, Qualcomm Institute 박사후연구원 (2021–2022) · 고려대학교 BK21 플러스사업단 연구교수 (2020–2021)</span>
+            <span data-en><b>Appointments</b> · Associate Professor, Myongji University (2022.03–present) · Postdoctoral Researcher, Qualcomm Institute, UC San Diego (2021–2022) · Research Professor, BK21 Plus, Korea University (2020–2021)</span><br>
+            <span data-ko><b>학력</b> · 공학박사, 전기전자공학과(전기에너지), 고려대학교 (2020, 지도교수 장길수) · 공학사, 전기전자전파공학부, 고려대학교 (2013)</span>
+            <span data-en><b>Education</b> · Ph.D. in Electrical Engineering (Electric Energy), Korea University (2020, Advisor: Prof. Gilsoo Jang) · B.S., Korea University (2013)</span>
           </div>
           <div class="chips">
-            <span class="chip">Power System Analysis &amp; Control</span>
-            <span class="chip">Storage System Design</span>
-            <span class="chip">Reactive Power Management</span>
-            <span class="chip">Renewable Interconnection</span>
+            <span class="chip">Power System Stability</span>
+            <span class="chip">IBR &amp; Renewable Integration</span>
+            <span class="chip">HVDC &amp; Wind Farm Modeling</span>
+            <span class="chip">Stochastic Assessment</span>
+            <span class="chip">Digital Twin · RTDS/EMTDC</span>
           </div>
         </div>
       </div>
@@ -186,29 +208,49 @@
       <span data-ko>석사과정 연구원</span><span data-en>Master's Course Students</span></h3>
     <div class="grid members">
       <div class="card mcard">
-        <div class="av">KK</div><div class="name">Kisu Kim</div>
+        <div class="av">KK<img src="images/member-kisu.jpg" alt="Kisu Kim" onerror="this.remove()"></div><div class="name">Kisu Kim</div>
         <div class="role">Renewable Energy</div>
         <div class="mail"><a href="mailto:kisu1229@mju.ac.kr">kisu1229@mju.ac.kr</a></div>
       </div>
       <div class="card mcard">
-        <div class="av">JK</div><div class="name">Jinhyeok Kim</div>
+        <div class="av">JK<img src="images/member-jinhyeok.jpg" alt="Jinhyeok Kim" onerror="this.remove()"></div><div class="name">Jinhyeok Kim</div>
         <div class="role">Power System Stability</div>
         <div class="mail"><a href="mailto:80241098@mju.ac.kr">80241098@mju.ac.kr</a></div>
       </div>
       <div class="card mcard">
-        <div class="av">BL</div><div class="name">Byeongchang Lim</div>
+        <div class="av">BL<img src="images/member-byeongchang.jpg" alt="Byeongchang Lim" onerror="this.remove()"></div><div class="name">Byeongchang Lim</div>
         <div class="role">Distribution Automation</div>
         <div class="mail"><a href="mailto:limbyeongchang@mju.ac.kr">limbyeongchang@mju.ac.kr</a></div>
       </div>
       <div class="card mcard">
-        <div class="av">IH</div><div class="name">Inchan Hong</div>
+        <div class="av">IH<img src="images/member-inchan.jpg" alt="Inchan Hong" onerror="this.remove()"></div><div class="name">Inchan Hong</div>
         <div class="role">IBR Stability</div>
         <div class="mail"><a href="mailto:hic0514@naver.com">hic0514@naver.com</a></div>
       </div>
       <div class="card mcard">
-        <div class="av">JJ</div><div class="name">Jaehoon Jung</div>
+        <div class="av">JJ<img src="images/member-jaehoon.jpg" alt="Jaehoon Jung" onerror="this.remove()"></div><div class="name">Jaehoon Jung</div>
         <div class="role">Grid-Forming Converter, DSP</div>
         <div class="mail"><a href="mailto:pho1103@naver.com">pho1103@naver.com</a></div>
+      </div>
+      <div class="card mcard">
+        <div class="av">JP<img src="images/member-jaeuk.jpg" alt="Jaeuk Park" onerror="this.remove()"></div><div class="name">Jaeuk Park</div>
+        <div class="role"><span data-ko>연구 주제 입력 예정</span><span data-en>Research topic TBD</span></div>
+        <div class="mail"><span data-ko>이메일 입력 예정</span><span data-en>Email TBD</span></div>
+      </div>
+    </div>
+
+    <h3 style="font-size:16px;color:var(--muted);margin:30px 0 14px;font-weight:600">
+      <span data-ko>졸업생 (Alumni)</span><span data-en>Alumni</span></h3>
+    <div class="grid members">
+      <div class="card mcard">
+        <div class="av">SB<img src="images/member-seungyeop.jpg" alt="Seungyeop Baek" onerror="this.remove()"></div><div class="name">Seungyeop Baek</div>
+        <div class="role">M.S. · 2026.02</div>
+        <div class="mail"><span data-ko>효성중공업 · 신송전시스템설계팀</span><span data-en>Hyosung Heavy Industries · New Transmission System Design Team</span></div>
+      </div>
+      <div class="card mcard">
+        <div class="av">YC<img src="images/member-yejin.jpg" alt="Yejin Choi" onerror="this.remove()"></div><div class="name">Yejin Choi</div>
+        <div class="role">M.S. · 2026.02</div>
+        <div class="mail"><span data-ko>효성중공업 · 중공업연구소 전력계통 연구팀</span><span data-en>Hyosung Heavy Industries · Power System Research Team, R&amp;D Center</span></div>
       </div>
     </div>
   </div>
@@ -283,6 +325,40 @@
       <span data-ko>이 외 다수의 SCIE 저널 논문 및 공저 논문이 있습니다. 전체 목록은 별도 페이지로 정리할 수 있습니다.</span>
       <span data-en>Additional SCIE journal papers and co-authored works are available; a full list can be provided on a separate page.</span>
     </p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="wrap">
+    <h2><span data-ko>활동 사진</span><span data-en>Gallery</span></h2>
+    <p class="sub" data-ko>학회, 현장 견학, 연구실 일상.</p>
+    <p class="sub" data-en>Conferences, site visits, and lab life.</p>
+    <div class="grid gallery">
+      <div class="gitem"><img src="images/gallery/g1.jpg" alt="Lab group" loading="lazy"><div class="cap"><span data-ko>연구실 단체사진</span><span data-en>Lab group photo</span></div></div>
+      <div class="gitem"><img src="images/gallery/g2.jpg" alt="Lab outing" loading="lazy"><div class="cap"><span data-ko>봄 나들이</span><span data-en>Spring outing</span></div></div>
+      <div class="gitem"><img src="images/gallery/g3.jpg" alt="Site visit" loading="lazy"><div class="cap"><span data-ko>발전소 현장 견학</span><span data-en>Power plant site visit</span></div></div>
+      <div class="gitem"><img src="images/gallery/g4.jpg" alt="Group" loading="lazy"><div class="cap"><span data-ko>연구실 단체사진</span><span data-en>Lab group photo</span></div></div>
+      <div class="gitem"><img src="images/gallery/g5.jpg" alt="ICRERA 2024" loading="lazy"><div class="cap"><span data-ko>ICRERA 2024 (일본 나가사키) 발표</span><span data-en>ICRERA 2024, Nagasaki</span></div></div>
+      <div class="gitem"><img src="images/gallery/g6.jpg" alt="Lab life" loading="lazy"><div class="cap"><span data-ko>연구실 일상</span><span data-en>Lab life</span></div></div>
+      <div class="gitem"><img src="images/gallery/g7.jpg" alt="CPEEE 2026" loading="lazy"><div class="cap"><span data-ko>CPEEE 2026 (일본 오사카) 학회</span><span data-en>CPEEE 2026, Osaka</span></div></div>
+      <div class="gitem"><img src="images/gallery/g8.jpg" alt="Reservist training" loading="lazy"><div class="cap"><span data-ko>학생 예비군 훈련</span><span data-en>Student reservist training</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SUPPORTERS -->
+<section id="supporters">
+  <div class="wrap">
+    <h2><span data-ko>협력·지원 기관</span><span data-en>Supporters &amp; Partners</span></h2>
+    <p class="sub" data-ko>함께하는 기관들.</p>
+    <p class="sub" data-en>Institutions we work with.</p>
+    <div class="suplogos">
+      <img src="images/supporters/sup-kepco.jpg" alt="KEPCO" loading="lazy">
+      <img src="images/supporters/sup-keti.jpg" alt="KETI" loading="lazy">
+      <img src="images/supporters/sup-gnu.jpg" alt="Gyeongsang National University" loading="lazy">
+      <img src="images/supporters/sup-uos.png" alt="University of Seoul" loading="lazy">
+    </div>
   </div>
 </section>
 
