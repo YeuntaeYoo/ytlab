@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YT Lab · Power Systems Engineering</title>
+<meta name="description" content="Power Systems Engineering Laboratory — research, members, and publications.">
+<style>
+  :root{
+    --bg:#ffffff; --fg:#1a1f2b; --muted:#5b6472; --line:#e6e9ef;
+    --brand:#123a6b; --brand-soft:#eef3fb; --accent:#2f7de1;
+    --card:#ffffff; --shadow:0 1px 3px rgba(20,40,80,.06),0 8px 24px rgba(20,40,80,.05);
+    --max:960px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",Roboto,sans-serif;
+    color:var(--fg);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.9);
+    backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;gap:20px;height:62px}
+  .brand{font-weight:700;color:var(--brand);font-size:18px;letter-spacing:-.2px;margin-right:auto}
+  .nav a.link{color:var(--muted);font-size:14px;font-weight:500}
+  .nav a.link:hover{color:var(--brand);text-decoration:none}
+  .langbtn{border:1px solid var(--line);background:#fff;border-radius:20px;
+    padding:5px 12px;font-size:13px;font-weight:600;color:var(--brand);cursor:pointer}
+  .langbtn:hover{background:var(--brand-soft)}
+  .menu-links{display:flex;gap:20px;align-items:center}
+  @media(max-width:640px){.menu-links{display:none}}
+
+  /* Hero */
+  .hero{padding:76px 0 56px;background:
+     radial-gradient(1200px 400px at 80% -50px,var(--brand-soft),transparent)}
+  .hero h1{font-size:40px;line-height:1.15;letter-spacing:-.6px;color:var(--brand);margin-bottom:16px}
+  .hero p.lead{font-size:18px;color:var(--muted);max-width:640px}
+  .hero .kicker{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+
+  section{padding:52px 0;border-top:1px solid var(--line)}
+  section h2{font-size:26px;letter-spacing:-.4px;color:var(--brand);margin-bottom:8px}
+  section .sub{color:var(--muted);margin-bottom:28px;font-size:15px}
+
+  /* Members */
+  .grid{display:grid;gap:18px}
+  .members{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:20px;box-shadow:var(--shadow)}
+  .avatar{width:56px;height:56px;border-radius:50%;background:var(--brand-soft);
+    display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--brand);
+    font-size:20px;margin-bottom:12px}
+  .card .name{font-weight:700;font-size:16px}
+  .card .role{color:var(--muted);font-size:13px;margin-top:2px}
+  .card .note{font-size:13px;color:var(--muted);margin-top:8px}
+
+  /* Research */
+  .research{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+  .rc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;
+    box-shadow:var(--shadow)}
+  .rc .tag{font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+  .rc h3{font-size:17px;margin:8px 0 6px}
+  .rc p{font-size:14px;color:var(--muted)}
+
+  /* Publications */
+  .pub{border-left:3px solid var(--brand-soft);padding:6px 0 6px 16px;margin-bottom:20px}
+  .pub:hover{border-left-color:var(--accent)}
+  .pub .t{font-weight:600;font-size:15px}
+  .pub .a{font-size:13px;color:var(--muted);margin-top:3px}
+  .pub .v{font-size:13px;color:var(--brand);font-style:italic;margin-top:3px}
+
+  footer{border-top:1px solid var(--line);padding:36px 0;color:var(--muted);font-size:14px}
+  footer .row{display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between}
+
+  [data-en]{display:none}
+  html[lang="en"] [data-ko]{display:none}
+  html[lang="en"] [data-en]{display:block}
+  html[lang="en"] span[data-en],html[lang="en"] a[data-en]{display:inline}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <span class="brand">YT Lab</span>
+    <nav class="menu-links">
+      <a class="link" href="#about"><span data-ko>소개</span><span data-en>About</span></a>
+      <a class="link" href="#members"><span data-ko>멤버</span><span data-en>Members</span></a>
+      <a class="link" href="#research"><span data-ko>연구</span><span data-en>Research</span></a>
+      <a class="link" href="#pubs"><span data-ko>논문</span><span data-en>Publications</span></a>
+    </nav>
+    <button class="langbtn" id="lang" onclick="toggleLang()">EN</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap">
+    <span class="kicker">Power Systems Engineering Laboratory</span>
+    <h1>
+      <span data-ko>전력시스템 공학 연구실</span>
+      <span data-en>Power Systems Engineering Lab</span>
+    </h1>
+    <p class="lead">
+      <span data-ko>전력계통 모델링·시뮬레이션과 신재생 연계 안정도 연구를 통해
+        더 안정적이고 지속가능한 전력망을 설계합니다.</span>
+      <span data-en>We design more reliable and sustainable power grids through
+        power-system modeling, simulation, and renewable-integration stability research.</span>
+    </p>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <h2><span data-ko>연구실 소개 · 비전</span><span data-en>About &amp; Vision</span></h2>
+    <p class="sub" data-ko>우리가 무엇을 하고, 어디를 향하는지.</p>
+    <p class="sub" data-en>What we do and where we are headed.</p>
+    <p data-ko>본 연구실은 전력계통의 안정도 해석, 신재생에너지 대량 연계, 전력망 시뮬레이션(PSS/E·PSCAD)을
+      중심으로 연구합니다. 실제 계통에서 발생하는 문제를 수학적 모델과 시뮬레이션으로 재현하고,
+      새로운 제어·운영 방법을 제안하는 것을 목표로 합니다. 대학원생과 학부 연구생이 함께
+      연구·논문·산학과제를 수행하며 성장합니다.</p>
+    <p data-en>Our lab focuses on power-system stability analysis, large-scale renewable
+      integration, and grid simulation (PSS/E, PSCAD). We reproduce real-grid problems through
+      mathematical models and simulation, and propose new control and operation methods. Graduate
+      and undergraduate researchers grow together through research, publications, and
+      industry-academic projects.</p>
+  </div>
+</section>
+
+<!-- MEMBERS -->
+<section id="members">
+  <div class="wrap">
+    <h2><span data-ko>멤버</span><span data-en>Members</span></h2>
+    <p class="sub" data-ko>연구실 구성원. (내용은 자유롭게 교체하세요)</p>
+    <p class="sub" data-en>Lab members. (Replace with your own content.)</p>
+    <div class="grid members">
+      <div class="card">
+        <div class="avatar">교</div>
+        <div class="name" data-ko>유연태</div><div class="name" data-en>Prof. Yeontae Yoo</div>
+        <div class="role"><span data-ko>지도교수 · 전력공학</span><span data-en>Principal Investigator · Power Engineering</span></div>
+        <div class="note"><span data-ko>계통 안정도, 신재생 연계, 전력망 시뮬레이션</span><span data-en>Grid stability, renewable integration, power-system simulation</span></div>
+      </div>
+      <div class="card">
+        <div class="avatar">석</div>
+        <div class="name" data-ko>대학원생 이름</div><div class="name" data-en>Graduate Student</div>
+        <div class="role"><span data-ko>석사과정</span><span data-en>M.S. Student</span></div>
+        <div class="note"><span data-ko>연구 주제 한 줄</span><span data-en>One-line research topic</span></div>
+      </div>
+      <div class="card">
+        <div class="avatar">학</div>
+        <div class="name" data-ko>학부연구생 이름</div><div class="name" data-en>Undergraduate Researcher</div>
+        <div class="role"><span data-ko>학부 연구생</span><span data-en>Undergraduate Researcher</span></div>
+        <div class="note"><span data-ko>관심 분야 한 줄</span><span data-en>One-line interest</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="wrap">
+    <h2><span data-ko>연구 · 프로젝트</span><span data-en>Research &amp; Projects</span></h2>
+    <p class="sub" data-ko>주요 연구 주제와 진행 과제.</p>
+    <p class="sub" data-en>Key research themes and ongoing projects.</p>
+    <div class="grid research">
+      <div class="rc">
+        <div class="tag">Stability</div>
+        <h3><span data-ko>계통 안정도 해석</span><span data-en>Grid Stability Analysis</span></h3>
+        <p data-ko>대규모 계통의 과도·소신호 안정도 평가와 개선 방안 연구.</p>
+        <p data-en>Transient and small-signal stability assessment and enhancement for large grids.</p>
+      </div>
+      <div class="rc">
+        <div class="tag">Renewables</div>
+        <h3><span data-ko>신재생 대량 연계</span><span data-en>Renewable Integration</span></h3>
+        <p data-ko>풍력·태양광 대량 연계 시 계통 영향 분석과 제어 전략.</p>
+        <p data-en>Grid-impact analysis and control strategies for high wind/solar penetration.</p>
+      </div>
+      <div class="rc">
+        <div class="tag">Simulation</div>
+        <h3><span data-ko>전력망 시뮬레이션</span><span data-en>Power-System Simulation</span></h3>
+        <p data-ko>PSS/E·PSCAD 기반 모델링과 EMT 해석 노하우 축적.</p>
+        <p data-en>PSS/E and PSCAD-based modeling and EMT-analysis know-how.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="pubs">
+  <div class="wrap">
+    <h2><span data-ko>논문 · 출판</span><span data-en>Publications</span></h2>
+    <p class="sub" data-ko>최근 저널·학회 논문. (실제 목록으로 교체하세요)</p>
+    <p class="sub" data-en>Recent journal and conference papers. (Replace with your list.)</p>
+
+    <div class="pub">
+      <div class="t">Paper title goes here</div>
+      <div class="a">A. Author, Y. Yoo, B. Author</div>
+      <div class="v">IEEE Transactions on Power Systems, 2026</div>
+    </div>
+    <div class="pub">
+      <div class="t">두 번째 논문 제목</div>
+      <div class="a">Y. Yoo, C. Author</div>
+      <div class="v">대한전기학회 하계학술대회, 2025</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap row">
+    <div>
+      <strong>YT Lab</strong> · <span data-ko>전력시스템 공학 연구실</span><span data-en>Power Systems Engineering Lab</span><br>
+      <span data-ko>이메일</span><span data-en>Email</span>: <a href="mailto:yooynt@gmail.com">yooynt@gmail.com</a>
+    </div>
+    <div>© <span id="year"></span> YT Lab</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  function toggleLang(){
+    var html=document.documentElement;
+    var en = html.getAttribute('lang')==='en';
+    html.setAttribute('lang', en?'ko':'en');
+    document.getElementById('lang').textContent = en?'EN':'KO';
+  }
+</script>
+</body>
+</html>
