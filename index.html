@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YT Lab · Power Systems Engineering</title>
-<meta name="description" content="Power Systems Engineering Laboratory — research, members, and publications.">
+<title>REGAL · Renewable Energy Grid Analysis Lab</title>
+<meta name="description" content="Renewable Energy Grid Analysis Laboratory (REGAL), Myongji University — power system stability, renewable integration, grid-forming converters.">
 <style>
   :root{
     --bg:#ffffff; --fg:#1a1f2b; --muted:#5b6472; --line:#e6e9ef;
-    --brand:#123a6b; --brand-soft:#eef3fb; --accent:#2f7de1;
-    --card:#ffffff; --shadow:0 1px 3px rgba(20,40,80,.06),0 8px 24px rgba(20,40,80,.05);
-    --max:960px;
+    --brand:#0f3d2e; --brand2:#127a4b; --brand-soft:#eaf5ef; --accent:#159a5f;
+    --card:#ffffff; --shadow:0 1px 3px rgba(15,61,46,.06),0 8px 24px rgba(15,61,46,.05);
+    --max:980px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -20,60 +20,76 @@
   a:hover{text-decoration:underline}
   .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
 
-  /* Header */
-  header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.9);
+  header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);
     backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
   .nav{display:flex;align-items:center;gap:20px;height:62px}
-  .brand{font-weight:700;color:var(--brand);font-size:18px;letter-spacing:-.2px;margin-right:auto}
+  .brand{font-weight:800;color:var(--brand);font-size:19px;letter-spacing:.5px;margin-right:auto}
+  .brand small{font-weight:600;color:var(--muted);font-size:12px;letter-spacing:0;margin-left:8px}
   .nav a.link{color:var(--muted);font-size:14px;font-weight:500}
   .nav a.link:hover{color:var(--brand);text-decoration:none}
   .langbtn{border:1px solid var(--line);background:#fff;border-radius:20px;
-    padding:5px 12px;font-size:13px;font-weight:600;color:var(--brand);cursor:pointer}
+    padding:5px 12px;font-size:13px;font-weight:700;color:var(--brand);cursor:pointer}
   .langbtn:hover{background:var(--brand-soft)}
-  .menu-links{display:flex;gap:20px;align-items:center}
-  @media(max-width:640px){.menu-links{display:none}}
+  .menu-links{display:flex;gap:18px;align-items:center}
+  @media(max-width:720px){.menu-links{display:none}.brand small{display:none}}
 
-  /* Hero */
-  .hero{padding:76px 0 56px;background:
-     radial-gradient(1200px 400px at 80% -50px,var(--brand-soft),transparent)}
-  .hero h1{font-size:40px;line-height:1.15;letter-spacing:-.6px;color:var(--brand);margin-bottom:16px}
-  .hero p.lead{font-size:18px;color:var(--muted);max-width:640px}
-  .hero .kicker{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.08em;
+  .hero{padding:80px 0 58px;background:
+     radial-gradient(1100px 420px at 82% -60px,var(--brand-soft),transparent)}
+  .hero h1{font-size:38px;line-height:1.18;letter-spacing:-.4px;color:var(--brand);margin-bottom:14px}
+  .hero p.lead{font-size:18px;color:var(--muted);max-width:660px}
+  .hero .kicker{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.09em;
     text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  .recruit{margin-top:22px;display:inline-block;background:var(--brand-soft);color:var(--brand);
+    border:1px solid #cfe8db;border-radius:10px;padding:10px 16px;font-size:14px;font-weight:600}
 
   section{padding:52px 0;border-top:1px solid var(--line)}
-  section h2{font-size:26px;letter-spacing:-.4px;color:var(--brand);margin-bottom:8px}
-  section .sub{color:var(--muted);margin-bottom:28px;font-size:15px}
+  section h2{font-size:26px;letter-spacing:-.3px;color:var(--brand);margin-bottom:8px}
+  section .sub{color:var(--muted);margin-bottom:26px;font-size:15px}
+
+  .grid{display:grid;gap:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px;box-shadow:var(--shadow)}
+
+  /* Professor */
+  .prof{display:grid;grid-template-columns:96px 1fr;gap:20px;align-items:start}
+  .prof .ava{width:96px;height:96px;border-radius:16px;background:var(--brand-soft);
+    display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--brand);font-size:30px}
+  .prof h3{font-size:20px;color:var(--brand)}
+  .prof .pos{color:var(--muted);font-size:14px;margin:2px 0 10px}
+  .prof .meta{font-size:13.5px;color:var(--muted);line-height:1.9}
+  .chips{margin-top:12px;display:flex;flex-wrap:wrap;gap:7px}
+  .chip{font-size:12px;background:var(--brand-soft);color:var(--brand2);border-radius:20px;padding:4px 11px;font-weight:600}
+  @media(max-width:560px){.prof{grid-template-columns:1fr}}
 
   /* Members */
-  .grid{display:grid;gap:18px}
-  .members{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
-    padding:20px;box-shadow:var(--shadow)}
-  .avatar{width:56px;height:56px;border-radius:50%;background:var(--brand-soft);
-    display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--brand);
-    font-size:20px;margin-bottom:12px}
-  .card .name{font-weight:700;font-size:16px}
-  .card .role{color:var(--muted);font-size:13px;margin-top:2px}
-  .card .note{font-size:13px;color:var(--muted);margin-top:8px}
+  .members{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+  .mcard .av{width:50px;height:50px;border-radius:50%;background:var(--brand-soft);
+    display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--brand);font-size:18px;margin-bottom:11px}
+  .mcard .name{font-weight:700;font-size:15.5px}
+  .mcard .role{color:var(--accent);font-size:12.5px;margin-top:3px;font-weight:600}
+  .mcard .mail{font-size:12px;color:var(--muted);margin-top:5px;word-break:break-all}
 
   /* Research */
-  .research{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
-  .rc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;
-    box-shadow:var(--shadow)}
-  .rc .tag{font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
-  .rc h3{font-size:17px;margin:8px 0 6px}
+  .research{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+  .rc .tag{font-size:11.5px;font-weight:800;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+  .rc h3{font-size:16.5px;margin:8px 0 6px;color:var(--brand)}
   .rc p{font-size:14px;color:var(--muted)}
 
-  /* Publications */
-  .pub{border-left:3px solid var(--brand-soft);padding:6px 0 6px 16px;margin-bottom:20px}
-  .pub:hover{border-left-color:var(--accent)}
-  .pub .t{font-weight:600;font-size:15px}
-  .pub .a{font-size:13px;color:var(--muted);margin-top:3px}
-  .pub .v{font-size:13px;color:var(--brand);font-style:italic;margin-top:3px}
+  /* Projects */
+  .proj{border-left:3px solid var(--brand-soft);padding:4px 0 4px 16px;margin-bottom:16px}
+  .proj:hover{border-left-color:var(--accent)}
+  .proj .t{font-weight:600;font-size:15px}
+  .proj .m{font-size:13px;color:var(--muted);margin-top:3px}
 
-  footer{border-top:1px solid var(--line);padding:36px 0;color:var(--muted);font-size:14px}
-  footer .row{display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between}
+  /* Publications */
+  .pub{padding:9px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--fg)}
+  .pub:last-child{border-bottom:none}
+  .pub .v{color:var(--muted);font-style:italic}
+  .pub .yr{color:var(--brand2);font-weight:700}
+  .more{margin-top:14px;font-size:13.5px;color:var(--muted)}
+
+  footer{border-top:1px solid var(--line);padding:38px 0;color:var(--muted);font-size:14px}
+  footer .row{display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between}
 
   [data-en]{display:none}
   html[lang="en"] [data-ko]{display:none}
@@ -84,11 +100,12 @@
 <body>
 <header>
   <div class="wrap nav">
-    <span class="brand">YT Lab</span>
+    <span class="brand">REGAL<small>Renewable Energy Grid Analysis Lab</small></span>
     <nav class="menu-links">
       <a class="link" href="#about"><span data-ko>소개</span><span data-en>About</span></a>
-      <a class="link" href="#members"><span data-ko>멤버</span><span data-en>Members</span></a>
+      <a class="link" href="#people"><span data-ko>구성원</span><span data-en>People</span></a>
       <a class="link" href="#research"><span data-ko>연구</span><span data-en>Research</span></a>
+      <a class="link" href="#projects"><span data-ko>프로젝트</span><span data-en>Projects</span></a>
       <a class="link" href="#pubs"><span data-ko>논문</span><span data-en>Publications</span></a>
     </nav>
     <button class="langbtn" id="lang" onclick="toggleLang()">EN</button>
@@ -98,62 +115,100 @@
 <!-- HERO -->
 <div class="hero">
   <div class="wrap">
-    <span class="kicker">Power Systems Engineering Laboratory</span>
+    <span class="kicker">Myongji University · Dept. of Electrical Engineering</span>
     <h1>
-      <span data-ko>전력시스템 공학 연구실</span>
-      <span data-en>Power Systems Engineering Lab</span>
+      <span data-ko>신재생 융합 계통 연구실 (REGAL)</span>
+      <span data-en>Renewable Energy Grid Analysis Lab (REGAL)</span>
     </h1>
     <p class="lead">
-      <span data-ko>전력계통 모델링·시뮬레이션과 신재생 연계 안정도 연구를 통해
-        더 안정적이고 지속가능한 전력망을 설계합니다.</span>
-      <span data-en>We design more reliable and sustainable power grids through
-        power-system modeling, simulation, and renewable-integration stability research.</span>
+      <span data-ko>전력계통 운영·안정도, 신재생에너지 대량 연계, 풍력 모델링·제어, 그리드포밍
+        핵심기술을 연구하며 미래 전력망의 효율과 안정성에 기여합니다.</span>
+      <span data-en>We advance the efficiency and stability of future power grids through research on
+        power-system operation and stability, large-scale renewable integration, wind-farm modeling
+        and control, and grid-forming technology.</span>
     </p>
+    <div class="recruit">
+      <span data-ko>🎓 신재생 계통융합 연구원(전기·통신·컴퓨터) 상시 모집 중 · 최대한의 지원을 약속합니다.</span>
+      <span data-en>🎓 We continuously recruit researchers (electrical, telecommunications, computer) and promise maximum support.</span>
+    </div>
   </div>
 </div>
 
 <!-- ABOUT -->
 <section id="about">
   <div class="wrap">
-    <h2><span data-ko>연구실 소개 · 비전</span><span data-en>About &amp; Vision</span></h2>
+    <h2><span data-ko>연구실 소개</span><span data-en>About REGAL</span></h2>
     <p class="sub" data-ko>우리가 무엇을 하고, 어디를 향하는지.</p>
     <p class="sub" data-en>What we do and where we are headed.</p>
-    <p data-ko>본 연구실은 전력계통의 안정도 해석, 신재생에너지 대량 연계, 전력망 시뮬레이션(PSS/E·PSCAD)을
-      중심으로 연구합니다. 실제 계통에서 발생하는 문제를 수학적 모델과 시뮬레이션으로 재현하고,
-      새로운 제어·운영 방법을 제안하는 것을 목표로 합니다. 대학원생과 학부 연구생이 함께
-      연구·논문·산학과제를 수행하며 성장합니다.</p>
-    <p data-en>Our lab focuses on power-system stability analysis, large-scale renewable
-      integration, and grid simulation (PSS/E, PSCAD). We reproduce real-grid problems through
-      mathematical models and simulation, and propose new control and operation methods. Graduate
-      and undergraduate researchers grow together through research, publications, and
-      industry-academic projects.</p>
+    <p data-ko>REGAL(Renewable Energy Grid Analysis Lab)은 명지대학교의 전력시스템 연구그룹입니다.
+      효율과 안정성 관점의 전력계통 운영 기법, ESS를 포함한 신재생에너지 대규모 연계, 풍력발전 모델링·제어를
+      중심으로 연구합니다. 실제 계통 문제를 수학적 모델과 시뮬레이션으로 재현하고, 새로운 제어·운영 방법을
+      제안하는 것을 목표로 합니다.</p>
+    <p data-en>REGAL (Renewable Energy Grid Analysis Lab) is a power-system research group at Myongji
+      University. Our research spans power-system operation schemes for efficiency and stability,
+      large-scale integration of renewable energy including storage devices (ESS), and wind-farm
+      modeling and control. We reproduce real-grid problems through mathematical models and
+      simulation and propose new control and operation methods.</p>
   </div>
 </section>
 
-<!-- MEMBERS -->
-<section id="members">
+<!-- PEOPLE -->
+<section id="people">
   <div class="wrap">
-    <h2><span data-ko>멤버</span><span data-en>Members</span></h2>
-    <p class="sub" data-ko>연구실 구성원. (내용은 자유롭게 교체하세요)</p>
-    <p class="sub" data-en>Lab members. (Replace with your own content.)</p>
+    <h2><span data-ko>구성원</span><span data-en>People</span></h2>
+    <p class="sub" data-ko>지도교수와 연구원.</p>
+    <p class="sub" data-en>Principal investigator and researchers.</p>
+
+    <div class="card" style="margin-bottom:22px">
+      <div class="prof">
+        <div class="ava">YY</div>
+        <div>
+          <h3>Yeuntae Yoo, Ph.D. <span data-ko>(유연태)</span></h3>
+          <div class="pos"><span data-ko>부교수 · 명지대학교 전기공학과</span><span data-en>Associate Professor · Dept. of Electrical Engineering, Myongji University</span></div>
+          <div class="meta">
+            Tel: +82-31-330-6366 &nbsp;·&nbsp; Email: <a href="mailto:ytyoo@mju.ac.kr">ytyoo@mju.ac.kr</a><br>
+            <span data-ko>학력: 고려대학교 전기공학 학사·박사 (전력시스템) · BK21 연구교수(2020)</span>
+            <span data-en>Education: B.S. &amp; Ph.D. in Electrical Engineering (Power Systems), Korea University · Research Professor, BK21 (2020)</span><br>
+            <span data-ko>경력: UC San Diego Qualcomm Institute 박사후연구원 (2021–2022)</span>
+            <span data-en>Experience: Postdoctoral Researcher, Qualcomm Institute, UC San Diego (2021–2022)</span>
+          </div>
+          <div class="chips">
+            <span class="chip">Power System Analysis &amp; Control</span>
+            <span class="chip">Storage System Design</span>
+            <span class="chip">Reactive Power Management</span>
+            <span class="chip">Renewable Interconnection</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-size:16px;color:var(--muted);margin:6px 0 14px;font-weight:600">
+      <span data-ko>석사과정 연구원</span><span data-en>Master's Course Students</span></h3>
     <div class="grid members">
-      <div class="card">
-        <div class="avatar">교</div>
-        <div class="name" data-ko>유연태</div><div class="name" data-en>Prof. Yeontae Yoo</div>
-        <div class="role"><span data-ko>지도교수 · 전력공학</span><span data-en>Principal Investigator · Power Engineering</span></div>
-        <div class="note"><span data-ko>계통 안정도, 신재생 연계, 전력망 시뮬레이션</span><span data-en>Grid stability, renewable integration, power-system simulation</span></div>
+      <div class="card mcard">
+        <div class="av">KK</div><div class="name">Kisu Kim</div>
+        <div class="role">Renewable Energy</div>
+        <div class="mail"><a href="mailto:kisu1229@mju.ac.kr">kisu1229@mju.ac.kr</a></div>
       </div>
-      <div class="card">
-        <div class="avatar">석</div>
-        <div class="name" data-ko>대학원생 이름</div><div class="name" data-en>Graduate Student</div>
-        <div class="role"><span data-ko>석사과정</span><span data-en>M.S. Student</span></div>
-        <div class="note"><span data-ko>연구 주제 한 줄</span><span data-en>One-line research topic</span></div>
+      <div class="card mcard">
+        <div class="av">JK</div><div class="name">Jinhyeok Kim</div>
+        <div class="role">Power System Stability</div>
+        <div class="mail"><a href="mailto:80241098@mju.ac.kr">80241098@mju.ac.kr</a></div>
       </div>
-      <div class="card">
-        <div class="avatar">학</div>
-        <div class="name" data-ko>학부연구생 이름</div><div class="name" data-en>Undergraduate Researcher</div>
-        <div class="role"><span data-ko>학부 연구생</span><span data-en>Undergraduate Researcher</span></div>
-        <div class="note"><span data-ko>관심 분야 한 줄</span><span data-en>One-line interest</span></div>
+      <div class="card mcard">
+        <div class="av">BL</div><div class="name">Byeongchang Lim</div>
+        <div class="role">Distribution Automation</div>
+        <div class="mail"><a href="mailto:limbyeongchang@mju.ac.kr">limbyeongchang@mju.ac.kr</a></div>
+      </div>
+      <div class="card mcard">
+        <div class="av">IH</div><div class="name">Inchan Hong</div>
+        <div class="role">IBR Stability</div>
+        <div class="mail"><a href="mailto:hic0514@naver.com">hic0514@naver.com</a></div>
+      </div>
+      <div class="card mcard">
+        <div class="av">JJ</div><div class="name">Jaehoon Jung</div>
+        <div class="role">Grid-Forming Converter, DSP</div>
+        <div class="mail"><a href="mailto:pho1103@naver.com">pho1103@naver.com</a></div>
       </div>
     </div>
   </div>
@@ -162,59 +217,82 @@
 <!-- RESEARCH -->
 <section id="research">
   <div class="wrap">
-    <h2><span data-ko>연구 · 프로젝트</span><span data-en>Research &amp; Projects</span></h2>
-    <p class="sub" data-ko>주요 연구 주제와 진행 과제.</p>
-    <p class="sub" data-en>Key research themes and ongoing projects.</p>
+    <h2><span data-ko>연구 분야</span><span data-en>Research</span></h2>
+    <p class="sub" data-ko>주요 연구 관심사.</p>
+    <p class="sub" data-en>Key research interests.</p>
     <div class="grid research">
-      <div class="rc">
+      <div class="card rc">
+        <div class="tag">IBR</div>
+        <h3><span data-ko>IBR 계통 연계 연구</span><span data-en>IBR Grid Integration Study</span></h3>
+        <p data-ko>인버터 기반 자원(IBR)의 계통 연계 영향 분석과 안정도 확보 전략.</p>
+        <p data-en>Impact analysis and stability strategies for inverter-based resource (IBR) grid integration.</p>
+      </div>
+      <div class="card rc">
+        <div class="tag">Stochastic</div>
+        <h3><span data-ko>확률론적 신재생 연계</span><span data-en>Stochastic Renewable Integration</span></h3>
+        <p data-ko>불확실성을 반영한 신재생에너지의 계통 연계 및 운영 평가.</p>
+        <p data-en>Stochastic integration and operational assessment of renewables under uncertainty.</p>
+      </div>
+      <div class="card rc">
         <div class="tag">Stability</div>
-        <h3><span data-ko>계통 안정도 해석</span><span data-en>Grid Stability Analysis</span></h3>
-        <p data-ko>대규모 계통의 과도·소신호 안정도 평가와 개선 방안 연구.</p>
-        <p data-en>Transient and small-signal stability assessment and enhancement for large grids.</p>
-      </div>
-      <div class="rc">
-        <div class="tag">Renewables</div>
-        <h3><span data-ko>신재생 대량 연계</span><span data-en>Renewable Integration</span></h3>
-        <p data-ko>풍력·태양광 대량 연계 시 계통 영향 분석과 제어 전략.</p>
-        <p data-en>Grid-impact analysis and control strategies for high wind/solar penetration.</p>
-      </div>
-      <div class="rc">
-        <div class="tag">Simulation</div>
-        <h3><span data-ko>전력망 시뮬레이션</span><span data-en>Power-System Simulation</span></h3>
-        <p data-ko>PSS/E·PSCAD 기반 모델링과 EMT 해석 노하우 축적.</p>
-        <p data-en>PSS/E and PSCAD-based modeling and EMT-analysis know-how.</p>
+        <h3><span data-ko>계통 해석·모델링</span><span data-en>System Analysis &amp; Modeling</span></h3>
+        <p data-ko>안정도 평가를 위한 전력계통 해석과 모델링 기법 연구.</p>
+        <p data-en>Power-system analysis and modeling for stability assessment.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <h2><span data-ko>연구 과제</span><span data-en>Research Projects</span></h2>
+    <p class="sub" data-ko>진행 중·최근 수행 과제.</p>
+    <p class="sub" data-en>Ongoing and recent projects.</p>
+
+    <div class="proj"><div class="t"><span data-ko>배전망 이력데이터를 활용한 수요·발전 예측 시나리오 및 자동화 알고리즘 개발</span><span data-en>Demand/generation forecasting scenarios and automation algorithms using distribution-grid historical data</span></div><div class="m">한국전력공사 (KEPCO) · 2025.12 – 2027.11</div></div>
+    <div class="proj"><div class="t"><span data-ko>GFM 인버터의 배전계통 도입 유효성 검토</span><span data-en>Feasibility study of grid-forming (GFM) inverter deployment in distribution systems</span></div><div class="m">한국전력공사 (KEPCO) · 2025.09 – 2027.05</div></div>
+    <div class="proj"><div class="t"><span data-ko>신뢰도 및 비용분석 기반 전원 MIX 최적화 알고리즘에 관한 연구</span><span data-en>Power-mix optimization algorithm based on reliability and cost analysis</span></div><div class="m">한국전력공사 전력연구원 (KEPRI) · 2024.08 – 2026.08</div></div>
+    <div class="proj"><div class="t"><span data-ko>분산에너지 계통접속 기반 그리드포밍 핵심기술 운영실증</span><span data-en>Operational demonstration of grid-forming core technology for distributed-energy grid connection</span></div><div class="m">한국에너지기술평가원 (KETEP) · 2023.04 – 2026.12</div></div>
+    <div class="proj"><div class="t"><span data-ko>IBR 합성관성의 빅데이터 기반 확률론적 평가 (전력계통 계획)</span><span data-en>Big-data-based stochastic assessment of synthetic inertia by IBR for power-system planning</span></div><div class="m">한국연구재단 (NRF) · 2022.06 – 2025.02</div></div>
+    <div class="proj"><div class="t"><span data-ko>분산형 재생에너지 시스템 개방형 통합 플랫폼 개발</span><span data-en>Development of an open integrated platform for distributed renewable-energy systems</span></div><div class="m">한국에너지기술평가원 (KETEP) · 2023.04 – 2025.12</div></div>
+    <div class="proj"><div class="t"><span data-ko>APR1400 원전 소내 전력계통 모델링 및 영향 평가</span><span data-en>Modeling and impact assessment of the on-site power system in the APR1400 nuclear power plant</span></div><div class="m">한국원자력안전기술원 (KINS) · 2022.04 – 2025.12</div></div>
+    <div class="proj"><div class="t"><span data-ko>인버터 기반 신재생 확대에 따른 송전계통 연계기준 대응 전략 연구</span><span data-en>Response strategy for transmission-grid interconnection standards under expanding inverter-based renewables</span></div><div class="m">한국전력 경영정책기초연구과제 · 2023.07 – 2024.04</div></div>
   </div>
 </section>
 
 <!-- PUBLICATIONS -->
 <section id="pubs">
   <div class="wrap">
-    <h2><span data-ko>논문 · 출판</span><span data-en>Publications</span></h2>
-    <p class="sub" data-ko>최근 저널·학회 논문. (실제 목록으로 교체하세요)</p>
-    <p class="sub" data-en>Recent journal and conference papers. (Replace with your list.)</p>
+    <h2><span data-ko>논문</span><span data-en>Publications</span></h2>
+    <p class="sub" data-ko>주요 저널 논문 (일부).</p>
+    <p class="sub" data-en>Selected journal publications.</p>
 
-    <div class="pub">
-      <div class="t">Paper title goes here</div>
-      <div class="a">A. Author, Y. Yoo, B. Author</div>
-      <div class="v">IEEE Transactions on Power Systems, 2026</div>
-    </div>
-    <div class="pub">
-      <div class="t">두 번째 논문 제목</div>
-      <div class="a">Y. Yoo, C. Author</div>
-      <div class="v">대한전기학회 하계학술대회, 2025</div>
-    </div>
+    <div class="pub">Yoo, Y., &amp; Jung, S. Correlation-Segregated Joint PDF for Stochastic Assessment of Synthetic Inertia in Wind Turbines. <span class="v">Renewable Energy</span>, <span class="yr">2025</span> (Accepted).</div>
+    <div class="pub">Yoo, Y., &amp; Jung, S. Modeling forecast errors for microgrid operation using Gaussian process regression. <span class="v">Scientific Reports</span>, 14(1), <span class="yr">2024</span> (SCIE).</div>
+    <div class="pub">Yoo, Y., &amp; Cho, S. Analysis of the Impact of Particulate Matter on Net Load and Behind-the-Meter PV Decoupling. <span class="v">Electronics</span>, 11(14):2261, <span class="yr">2022</span>.</div>
+    <div class="pub">Nam, I., Kim, J.H., Yoo, Y., &amp; Jung, S. An EV-based Wind Power Curtailment Scheme Utilizing the Power Sensitivity of the Distribution Network. <span class="v">IEEE Access</span>, <span class="yr">2022</span>.</div>
+    <div class="pub">Yoo, Y., Jang, G., Lee, J., &amp; Jung, S. Stochastic forecast error estimation of high PV penetration system considering net-load/PV decoupling for microgrid operation. <span class="v">IET Renewable Power Generation</span>, <span class="yr">2022</span>.</div>
+    <div class="pub">Yoo, Y., Jang, G., &amp; Jung, S. Stochastic assessment of frequency support from wind power plants for power systems with high wind penetration. <span class="v">IET Renewable Power Generation</span>, <span class="yr">2022</span>.</div>
+    <div class="pub">Yoo, Y., et al. Development of practical allocation method for reactive power reference for wind farms through inner-voltage restriction. <span class="v">IET Generation, Transmission &amp; Distribution</span>, <span class="yr">2022</span>.</div>
+    <div class="pub">Yoo, Y., Jang, G., &amp; Jung, S. A Study on Sizing of Substation for PV With Optimized Operation of BESS. <span class="v">IEEE Access</span>, 8:214577–214585, <span class="yr">2020</span> (SCIE).</div>
+    <div class="pub">Yoo, Y., et al. Dispatchable Substation for Operation and Control of Renewable Energy Resources. <span class="v">Applied Sciences</span>, <span class="yr">2020</span> (SCIE).</div>
+    <div class="pub">Yoo, Y., et al. Modified reactive power allocation strategy for large-scale offshore wind turbine considering subsystem configuration. <span class="v">IET GTD</span>, 14(22):5135–5142, <span class="yr">2020</span> (SCIE).</div>
+
+    <p class="more">
+      <span data-ko>이 외 다수의 SCIE 저널 논문 및 공저 논문이 있습니다. 전체 목록은 별도 페이지로 정리할 수 있습니다.</span>
+      <span data-en>Additional SCIE journal papers and co-authored works are available; a full list can be provided on a separate page.</span>
+    </p>
   </div>
 </section>
 
 <footer>
   <div class="wrap row">
     <div>
-      <strong>YT Lab</strong> · <span data-ko>전력시스템 공학 연구실</span><span data-en>Power Systems Engineering Lab</span><br>
-      <span data-ko>이메일</span><span data-en>Email</span>: <a href="mailto:yooynt@gmail.com">yooynt@gmail.com</a>
+      <strong>REGAL</strong> · <span data-ko>신재생 융합 계통 연구실 · 명지대학교 전기공학과</span><span data-en>Renewable Energy Grid Analysis Lab · Dept. of Electrical Engineering, Myongji University</span><br>
+      <span data-ko>이메일</span><span data-en>Email</span>: <a href="mailto:ytyoo@mju.ac.kr">ytyoo@mju.ac.kr</a> &nbsp;·&nbsp; Tel: +82-31-330-6366
     </div>
-    <div>© <span id="year"></span> YT Lab</div>
+    <div>© <span id="year"></span> REGAL, Myongji University</div>
   </div>
 </footer>
 
