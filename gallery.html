@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>활동 사진 · REGAL</title>
+<meta name="description" content="Gallery of the Renewable Energy Grid Analysis Lab (REGAL), Myongji University — conferences, site visits, and lab life.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html">REGAL<small>Renewable Energy Grid Analysis Lab</small></a>
+    <nav class="menu-links">
+      <a class="link" href="index.html"><span data-ko>홈</span><span data-en>Home</span></a>
+      <a class="link" href="people.html"><span data-ko>구성원</span><span data-en>People</span></a>
+      <a class="link" href="research.html"><span data-ko>연구</span><span data-en>Research</span></a>
+      <a class="link" href="projects.html"><span data-ko>프로젝트</span><span data-en>Projects</span></a>
+      <a class="link" href="publications.html"><span data-ko>논문</span><span data-en>Publications</span></a>
+      <a class="link active" href="gallery.html"><span data-ko>활동</span><span data-en>Gallery</span></a>
+    </nav>
+    <button class="langbtn" id="lang" onclick="toggleLang()">EN</button>
+  </div>
+</header>
+
+<div class="pagehead">
+  <div class="wrap">
+    <h1><span data-ko>활동 사진</span><span data-en>Gallery</span></h1>
+    <p data-ko>학회, 현장 견학, 연구실 일상. 사진을 클릭하면 크게 볼 수 있습니다.</p>
+    <p data-en>Conferences, site visits, and lab life. Click a photo to view it full size.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <!-- GALLERY ITEMS -->
+    <div class="ggrid" id="ggrid">
+      <figure class="gfig" id="g1">
+        <button type="button"><img src="images/gallery/g1.jpg" alt="Lab group photo, spring 2023" loading="lazy"></button>
+        <figcaption><span data-ko>2023 봄 벚꽃 단체사진</span><span data-en>Spring group photo, 2023</span></figcaption>
+      </figure>
+      <figure class="gfig" id="g2">
+        <button type="button"><img src="images/gallery/g2.jpg" alt="Lab group photo, spring 2023" loading="lazy"></button>
+        <figcaption><span data-ko>2023 봄 벚꽃 단체사진</span><span data-en>Spring group photo, 2023</span></figcaption>
+      </figure>
+      <figure class="gfig" id="g3">
+        <button type="button"><img src="images/gallery/g3.jpg" alt="Power plant tour, IEEE PES General Meeting 2023" loading="lazy"></button>
+        <figcaption><span data-ko>IEEE PES GM 2023 (미국 플로리다) 발전소 견학</span><span data-en>Power plant tour, IEEE PES General Meeting 2023, Florida</span></figcaption>
+      </figure>
+      <figure class="gfig" id="g4">
+        <button type="button"><img src="images/gallery/g4.jpg" alt="ICRERA 2024" loading="lazy"></button>
+        <figcaption><span data-ko>ICRERA 2024 (일본 나가사키) 발표</span><span data-en>ICRERA 2024, Nagasaki</span></figcaption>
+      </figure>
+      <figure class="gfig" id="g5">
+        <button type="button"><img src="images/gallery/g5.jpg" alt="Lab group photo, spring 2025" loading="lazy"></button>
+        <figcaption><span data-ko>2025 봄 벚꽃 단체사진</span><span data-en>Spring group photo, 2025</span></figcaption>
+      </figure>
+      <figure class="gfig" id="g6">
+        <button type="button"><img src="images/gallery/g6.jpg" alt="Lab life" loading="lazy"></button>
+        <figcaption><span data-ko>연구실 일상</span><span data-en>Lab life</span></figcaption>
+      </figure>
+      <figure class="gfig" id="g7">
+        <button type="button"><img src="images/gallery/g7.jpg" alt="CPEEE 2026" loading="lazy"></button>
+        <figcaption><span data-ko>CPEEE 2026 (일본 오사카) 학회</span><span data-en>CPEEE 2026, Osaka</span></figcaption>
+      </figure>
+      <figure class="gfig" id="g8">
+        <button type="button"><img src="images/gallery/g8.jpg" alt="Student reservist training" loading="lazy"></button>
+        <figcaption><span data-ko>학생 예비군 훈련</span><span data-en>Student reservist training</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="x" id="lbClose" aria-label="Close">×</button>
+  <button class="nav-btn prev" id="lbPrev" aria-label="Previous">‹</button>
+  <img id="lbImg" src="" alt="">
+  <button class="nav-btn next" id="lbNext" aria-label="Next">›</button>
+  <div class="lbcap" id="lbCap"></div>
+</div>
+
+<footer>
+  <div class="wrap row">
+    <div>
+      <strong>REGAL</strong> · <span data-ko>신재생 융합 계통 연구실 · 명지대학교 전기공학과</span><span data-en>Renewable Energy Grid Analysis Lab · Dept. of Electrical Engineering, Myongji University</span><br>
+      <span data-ko>이메일</span><span data-en>Email</span>: <a href="mailto:ytyoo@mju.ac.kr">ytyoo@mju.ac.kr</a> &nbsp;·&nbsp; Tel: +82-31-330-6366
+    </div>
+    <div>© <span id="year"></span> REGAL, Myongji University</div>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>

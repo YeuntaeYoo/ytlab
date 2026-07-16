@@ -5,129 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>REGAL · Renewable Energy Grid Analysis Lab</title>
 <meta name="description" content="Renewable Energy Grid Analysis Laboratory (REGAL), Myongji University — power system stability, renewable integration, grid-forming converters.">
-<style>
-  :root{
-    --bg:#ffffff; --fg:#1a1f2b; --muted:#5b6472; --line:#e6e9ef;
-    --brand:#0f3d2e; --brand2:#127a4b; --brand-soft:#eaf5ef; --accent:#159a5f;
-    --card:#ffffff; --shadow:0 1px 3px rgba(15,61,46,.06),0 8px 24px rgba(15,61,46,.05);
-    --max:980px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",Roboto,sans-serif;
-    color:var(--fg);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased}
-  a{color:var(--accent);text-decoration:none}
-  a:hover{text-decoration:underline}
-  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
-
-  header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);
-    backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
-  .nav{display:flex;align-items:center;gap:20px;height:62px}
-  .brand{font-weight:800;color:var(--brand);font-size:19px;letter-spacing:.5px;margin-right:auto}
-  .brand small{font-weight:600;color:var(--muted);font-size:12px;letter-spacing:0;margin-left:8px}
-  .nav a.link{color:var(--muted);font-size:14px;font-weight:500}
-  .nav a.link:hover{color:var(--brand);text-decoration:none}
-  .langbtn{border:1px solid var(--line);background:#fff;border-radius:20px;
-    padding:5px 12px;font-size:13px;font-weight:700;color:var(--brand);cursor:pointer}
-  .langbtn:hover{background:var(--brand-soft)}
-  .menu-links{display:flex;gap:18px;align-items:center}
-  @media(max-width:720px){.menu-links{display:none}.brand small{display:none}}
-
-  .hero{position:relative;padding:96px 0 84px;overflow:hidden;
-    background:#0a1f18 url("images/hero.jpg") center 30%/cover no-repeat}
-  .hero::before{content:"";position:absolute;inset:0;
-    background:linear-gradient(90deg,rgba(8,26,20,.92),rgba(8,26,20,.66) 55%,rgba(8,26,20,.35))}
-  .hero .wrap{position:relative}
-  .hero h1{font-size:40px;line-height:1.18;letter-spacing:-.4px;color:#fff;margin-bottom:14px}
-  .hero p.lead{font-size:18px;color:#dcefe6;max-width:660px}
-  .hero .kicker{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.09em;
-    text-transform:uppercase;color:#7ee0ad;margin-bottom:14px}
-  .recruit{margin-top:24px;display:inline-block;background:rgba(255,255,255,.12);color:#eafff5;
-    border:1px solid rgba(126,224,173,.4);border-radius:10px;padding:11px 16px;font-size:14px;font-weight:600;
-    backdrop-filter:blur(4px)}
-
-  section{padding:52px 0;border-top:1px solid var(--line)}
-  section h2{font-size:26px;letter-spacing:-.3px;color:var(--brand);margin-bottom:8px}
-  section .sub{color:var(--muted);margin-bottom:26px;font-size:15px}
-
-  .grid{display:grid;gap:18px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
-    padding:22px;box-shadow:var(--shadow)}
-
-  /* Professor */
-  .prof{display:grid;grid-template-columns:96px 1fr;gap:20px;align-items:start}
-  .prof .ava{position:relative;width:96px;height:96px;border-radius:16px;background:var(--brand-soft);
-    display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--brand);font-size:30px;overflow:hidden}
-  .prof .ava img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .prof h3{font-size:20px;color:var(--brand)}
-  .prof .pos{color:var(--muted);font-size:14px;margin:2px 0 10px}
-  .prof .meta{font-size:13.5px;color:var(--muted);line-height:1.9}
-  .chips{margin-top:12px;display:flex;flex-wrap:wrap;gap:7px}
-  .chip{font-size:12px;background:var(--brand-soft);color:var(--brand2);border-radius:20px;padding:4px 11px;font-weight:600}
-  @media(max-width:560px){.prof{grid-template-columns:1fr}}
-
-  /* Members */
-  .members{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
-  .mcard .av{position:relative;width:56px;height:56px;border-radius:50%;background:var(--brand-soft);
-    display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--brand);font-size:18px;margin-bottom:11px;overflow:hidden}
-  .mcard .av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .mcard .name{font-weight:700;font-size:15.5px}
-  .mcard .role{color:var(--accent);font-size:12.5px;margin-top:3px;font-weight:600}
-  .mcard .mail{font-size:12px;color:var(--muted);margin-top:5px;word-break:break-all}
-
-  /* Research */
-  .research{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
-  .rc .tag{font-size:11.5px;font-weight:800;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
-  .rc h3{font-size:16.5px;margin:8px 0 6px;color:var(--brand)}
-  .rc p{font-size:14px;color:var(--muted)}
-
-  /* Projects */
-  .proj{border-left:3px solid var(--brand-soft);padding:4px 0 4px 16px;margin-bottom:16px}
-  .proj:hover{border-left-color:var(--accent)}
-  .proj .t{font-weight:600;font-size:15px}
-  .proj .m{font-size:13px;color:var(--muted);margin-top:3px}
-
-  /* Publications */
-  .pub{padding:9px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--fg)}
-  .pub:last-child{border-bottom:none}
-  .pub .v{color:var(--muted);font-style:italic}
-  .pub .yr{color:var(--brand2);font-weight:700}
-  .more{margin-top:14px;font-size:13.5px;color:var(--muted)}
-
-  /* Gallery */
-  .gallery{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
-  .gitem{position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;
-    border:1px solid var(--line);background:var(--brand-soft)}
-  .gitem img{width:100%;height:100%;object-fit:cover;display:block}
-  .gitem .cap{position:absolute;left:0;right:0;bottom:0;padding:8px 10px;font-size:12.5px;
-    color:#fff;background:linear-gradient(transparent,rgba(15,61,46,.72))}
-
-  /* Supporters */
-  .suplogos{display:flex;flex-wrap:wrap;align-items:center;gap:34px}
-  .suplogos img{height:52px;width:auto;object-fit:contain;filter:grayscale(.2);opacity:.9}
-  .suplogos img:hover{filter:none;opacity:1}
-  @media(max-width:560px){.suplogos{gap:22px}.suplogos img{height:40px}}
-
-  footer{border-top:1px solid var(--line);padding:38px 0;color:var(--muted);font-size:14px}
-  footer .row{display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between}
-
-  [data-en]{display:none}
-  html[lang="en"] [data-ko]{display:none}
-  html[lang="en"] [data-en]{display:block}
-  html[lang="en"] span[data-en],html[lang="en"] a[data-en]{display:inline}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header>
   <div class="wrap nav">
-    <span class="brand">REGAL<small>Renewable Energy Grid Analysis Lab</small></span>
+    <a class="brand" href="index.html">REGAL<small>Renewable Energy Grid Analysis Lab</small></a>
     <nav class="menu-links">
-      <a class="link" href="#about"><span data-ko>소개</span><span data-en>About</span></a>
-      <a class="link" href="#people"><span data-ko>구성원</span><span data-en>People</span></a>
-      <a class="link" href="#research"><span data-ko>연구</span><span data-en>Research</span></a>
-      <a class="link" href="#projects"><span data-ko>프로젝트</span><span data-en>Projects</span></a>
-      <a class="link" href="#pubs"><span data-ko>논문</span><span data-en>Publications</span></a>
-      <a class="link" href="#gallery"><span data-ko>활동</span><span data-en>Gallery</span></a>
+      <a class="link active" href="index.html"><span data-ko>홈</span><span data-en>Home</span></a>
+      <a class="link" href="people.html"><span data-ko>구성원</span><span data-en>People</span></a>
+      <a class="link" href="research.html"><span data-ko>연구</span><span data-en>Research</span></a>
+      <a class="link" href="projects.html"><span data-ko>프로젝트</span><span data-en>Projects</span></a>
+      <a class="link" href="publications.html"><span data-ko>논문</span><span data-en>Publications</span></a>
+      <a class="link" href="gallery.html"><span data-ko>활동</span><span data-en>Gallery</span></a>
     </nav>
     <button class="langbtn" id="lang" onclick="toggleLang()">EN</button>
   </div>
@@ -173,183 +63,43 @@
   </div>
 </section>
 
-<!-- PEOPLE -->
-<section id="people">
+<!-- EXPLORE -->
+<section id="explore">
   <div class="wrap">
-    <h2><span data-ko>구성원</span><span data-en>People</span></h2>
-    <p class="sub" data-ko>지도교수와 연구원.</p>
-    <p class="sub" data-en>Principal investigator and researchers.</p>
-
-    <div class="card" style="margin-bottom:22px">
-      <div class="prof">
-        <div class="ava">YY<img src="images/prof.jpg" alt="Yeuntae Yoo" onerror="this.remove()"></div>
-        <div>
-          <h3>Yeuntae Yoo, Ph.D. <span data-ko>(유연태)</span></h3>
-          <div class="pos"><span data-ko>부교수 · 명지대학교 전기공학과</span><span data-en>Associate Professor · Dept. of Electrical Engineering, Myongji University</span></div>
-          <div class="meta">
-            Tel: +82-31-330-6366 &nbsp;·&nbsp; Email: <a href="mailto:ytyoo@mju.ac.kr">ytyoo@mju.ac.kr</a><br>
-            <span data-ko><b>경력</b> · 명지대학교 전기공학과 부교수 (2022.03–현재) · UC San Diego, Qualcomm Institute 박사후연구원 (2021–2022) · 고려대학교 BK21 플러스사업단 연구교수 (2020–2021)</span>
-            <span data-en><b>Appointments</b> · Associate Professor, Myongji University (2022.03–present) · Postdoctoral Researcher, Qualcomm Institute, UC San Diego (2021–2022) · Research Professor, BK21 Plus, Korea University (2020–2021)</span><br>
-            <span data-ko><b>학력</b> · 공학박사, 전기전자공학과(전기에너지), 고려대학교 (2020, 지도교수 장길수) · 공학사, 전기전자전파공학부, 고려대학교 (2013)</span>
-            <span data-en><b>Education</b> · Ph.D. in Electrical Engineering (Electric Energy), Korea University (2020, Advisor: Prof. Gilsoo Jang) · B.S., Korea University (2013)</span>
-          </div>
-          <div class="chips">
-            <span class="chip">Power System Stability</span>
-            <span class="chip">IBR &amp; Renewable Integration</span>
-            <span class="chip">HVDC &amp; Wind Farm Modeling</span>
-            <span class="chip">Stochastic Assessment</span>
-            <span class="chip">Digital Twin · RTDS/EMTDC</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <h3 style="font-size:16px;color:var(--muted);margin:6px 0 14px;font-weight:600">
-      <span data-ko>석사과정 연구원</span><span data-en>Master's Course Students</span></h3>
-    <div class="grid members">
-      <div class="card mcard">
-        <div class="av">KK<img src="images/member-kisu.jpg" alt="Kisu Kim" onerror="this.remove()"></div><div class="name">Kisu Kim</div>
-        <div class="role">Renewable Energy</div>
-        <div class="mail"><a href="mailto:kisu1229@mju.ac.kr">kisu1229@mju.ac.kr</a></div>
-      </div>
-      <div class="card mcard">
-        <div class="av">JK<img src="images/member-jinhyeok.jpg" alt="Jinhyeok Kim" onerror="this.remove()"></div><div class="name">Jinhyeok Kim</div>
-        <div class="role">Power System Stability</div>
-        <div class="mail"><a href="mailto:80241098@mju.ac.kr">80241098@mju.ac.kr</a></div>
-      </div>
-      <div class="card mcard">
-        <div class="av">BL<img src="images/member-byeongchang.jpg" alt="Byeongchang Lim" onerror="this.remove()"></div><div class="name">Byeongchang Lim</div>
-        <div class="role">Distribution Automation</div>
-        <div class="mail"><a href="mailto:limbyeongchang@mju.ac.kr">limbyeongchang@mju.ac.kr</a></div>
-      </div>
-      <div class="card mcard">
-        <div class="av">IH<img src="images/member-inchan.jpg" alt="Inchan Hong" onerror="this.remove()"></div><div class="name">Inchan Hong</div>
-        <div class="role">IBR Stability</div>
-        <div class="mail"><a href="mailto:hic0514@naver.com">hic0514@naver.com</a></div>
-      </div>
-      <div class="card mcard">
-        <div class="av">JJ<img src="images/member-jaehoon.jpg" alt="Jaehoon Jung" onerror="this.remove()"></div><div class="name">Jaehoon Jung</div>
-        <div class="role">Grid-Forming Converter, DSP</div>
-        <div class="mail"><a href="mailto:pho1103@naver.com">pho1103@naver.com</a></div>
-      </div>
-      <div class="card mcard">
-        <div class="av">JP<img src="images/member-jaeuk.jpg" alt="Jaeuk Park" onerror="this.remove()"></div><div class="name">Jaeuk Park</div>
-        <div class="role">Grid-Forming Converter</div>
-        <div class="mail"><span data-ko>이메일 입력 예정</span><span data-en>Email TBD</span></div>
-      </div>
-      <div class="card mcard">
-        <div class="av">GK<img src="images/member-gangmin.jpg" alt="Gangmin Kim" onerror="this.remove()"></div><div class="name">Gangmin Kim</div>
-        <div class="role">Grid-Forming Converter</div>
-        <div class="mail"><span data-ko>이메일 입력 예정</span><span data-en>Email TBD</span></div>
-      </div>
-    </div>
-
-    <h3 style="font-size:16px;color:var(--muted);margin:30px 0 14px;font-weight:600">
-      <span data-ko>졸업생 (Alumni)</span><span data-en>Alumni</span></h3>
-    <div class="grid members">
-      <div class="card mcard">
-        <div class="av">SB<img src="images/member-seungyeop.jpg" alt="Seungyeop Baek" onerror="this.remove()"></div><div class="name">Seungyeop Baek</div>
-        <div class="role">M.S. · 2026.02</div>
-        <div class="mail"><span data-ko>효성중공업 · 신송전시스템설계팀</span><span data-en>Hyosung Heavy Industries · New Transmission System Design Team</span></div>
-      </div>
-      <div class="card mcard">
-        <div class="av">YC<img src="images/member-yejin.jpg" alt="Yejin Choi" onerror="this.remove()"></div><div class="name">Yejin Choi</div>
-        <div class="role">M.S. · 2026.02</div>
-        <div class="mail"><span data-ko>효성중공업 · 중공업연구소 전력계통 연구팀</span><span data-en>Hyosung Heavy Industries · Power System Research Team, R&amp;D Center</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- RESEARCH -->
-<section id="research">
-  <div class="wrap">
-    <h2><span data-ko>연구 분야</span><span data-en>Research</span></h2>
-    <p class="sub" data-ko>주요 연구 관심사.</p>
-    <p class="sub" data-en>Key research interests.</p>
-    <div class="grid research">
-      <div class="card rc">
-        <div class="tag">IBR</div>
-        <h3><span data-ko>IBR 계통 연계 연구</span><span data-en>IBR Grid Integration Study</span></h3>
-        <p data-ko>인버터 기반 자원(IBR)의 계통 연계 영향 분석과 안정도 확보 전략.</p>
-        <p data-en>Impact analysis and stability strategies for inverter-based resource (IBR) grid integration.</p>
-      </div>
-      <div class="card rc">
-        <div class="tag">Stochastic</div>
-        <h3><span data-ko>확률론적 신재생 연계</span><span data-en>Stochastic Renewable Integration</span></h3>
-        <p data-ko>불확실성을 반영한 신재생에너지의 계통 연계 및 운영 평가.</p>
-        <p data-en>Stochastic integration and operational assessment of renewables under uncertainty.</p>
-      </div>
-      <div class="card rc">
-        <div class="tag">Stability</div>
-        <h3><span data-ko>계통 해석·모델링</span><span data-en>System Analysis &amp; Modeling</span></h3>
-        <p data-ko>안정도 평가를 위한 전력계통 해석과 모델링 기법 연구.</p>
-        <p data-en>Power-system analysis and modeling for stability assessment.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="wrap">
-    <h2><span data-ko>연구 과제</span><span data-en>Research Projects</span></h2>
-    <p class="sub" data-ko>진행 중·최근 수행 과제.</p>
-    <p class="sub" data-en>Ongoing and recent projects.</p>
-
-    <div class="proj"><div class="t"><span data-ko>배전망 이력데이터를 활용한 수요·발전 예측 시나리오 및 자동화 알고리즘 개발</span><span data-en>Demand/generation forecasting scenarios and automation algorithms using distribution-grid historical data</span></div><div class="m">한국전력공사 (KEPCO) · 2025.12 – 2027.11</div></div>
-    <div class="proj"><div class="t"><span data-ko>GFM 인버터의 배전계통 도입 유효성 검토</span><span data-en>Feasibility study of grid-forming (GFM) inverter deployment in distribution systems</span></div><div class="m">한국전력공사 (KEPCO) · 2025.09 – 2027.05</div></div>
-    <div class="proj"><div class="t"><span data-ko>신뢰도 및 비용분석 기반 전원 MIX 최적화 알고리즘에 관한 연구</span><span data-en>Power-mix optimization algorithm based on reliability and cost analysis</span></div><div class="m">한국전력공사 전력연구원 (KEPRI) · 2024.08 – 2026.08</div></div>
-    <div class="proj"><div class="t"><span data-ko>분산에너지 계통접속 기반 그리드포밍 핵심기술 운영실증</span><span data-en>Operational demonstration of grid-forming core technology for distributed-energy grid connection</span></div><div class="m">한국에너지기술평가원 (KETEP) · 2023.04 – 2026.12</div></div>
-    <div class="proj"><div class="t"><span data-ko>IBR 합성관성의 빅데이터 기반 확률론적 평가 (전력계통 계획)</span><span data-en>Big-data-based stochastic assessment of synthetic inertia by IBR for power-system planning</span></div><div class="m">한국연구재단 (NRF) · 2022.06 – 2025.02</div></div>
-    <div class="proj"><div class="t"><span data-ko>분산형 재생에너지 시스템 개방형 통합 플랫폼 개발</span><span data-en>Development of an open integrated platform for distributed renewable-energy systems</span></div><div class="m">한국에너지기술평가원 (KETEP) · 2023.04 – 2025.12</div></div>
-    <div class="proj"><div class="t"><span data-ko>APR1400 원전 소내 전력계통 모델링 및 영향 평가</span><span data-en>Modeling and impact assessment of the on-site power system in the APR1400 nuclear power plant</span></div><div class="m">한국원자력안전기술원 (KINS) · 2022.04 – 2025.12</div></div>
-    <div class="proj"><div class="t"><span data-ko>인버터 기반 신재생 확대에 따른 송전계통 연계기준 대응 전략 연구</span><span data-en>Response strategy for transmission-grid interconnection standards under expanding inverter-based renewables</span></div><div class="m">한국전력 경영정책기초연구과제 · 2023.07 – 2024.04</div></div>
-  </div>
-</section>
-
-<!-- PUBLICATIONS -->
-<section id="pubs">
-  <div class="wrap">
-    <h2><span data-ko>논문</span><span data-en>Publications</span></h2>
-    <p class="sub" data-ko>주요 저널 논문 (일부).</p>
-    <p class="sub" data-en>Selected journal publications.</p>
-
-    <div class="pub">Kang, S., Jung, S., Lee, D., Yoo, Y., &amp; Jang, G. Copula-based operation strategy for green hydrogen production systems considering coordination with energy storage systems. <span class="v">Heliyon</span>, <span class="yr">2025</span>.</div>
-    <div class="pub">Yoo, Y., Song, S., &amp; Jung, S. Strategic wind farm placement for improved voltage stability and active power loss reduction using reactive power sensitivity analysis. <span class="v">Journal of Mechanical Science and Technology</span>, 39(4):1689–1699, <span class="yr">2025</span>.</div>
-    <div class="pub">Yoo, Y., &amp; Jung, S. Correlation-Segregated Joint PDF for Stochastic Assessment of Synthetic Inertia in Wind Turbines. <span class="v">Renewable Energy</span>, <span class="yr">2025</span> (Accepted).</div>
-    <div class="pub">Yoo, Y., &amp; Jung, S. Modeling forecast errors for microgrid operation using Gaussian process regression. <span class="v">Scientific Reports</span>, 14(1), <span class="yr">2024</span> (SCIE).</div>
-    <div class="pub">Yoo, Y., &amp; Cho, S. Analysis of the Impact of Particulate Matter on Net Load and Behind-the-Meter PV Decoupling. <span class="v">Electronics</span>, 11(14):2261, <span class="yr">2022</span>.</div>
-    <div class="pub">Nam, I., Kim, J.H., Yoo, Y., &amp; Jung, S. An EV-based Wind Power Curtailment Scheme Utilizing the Power Sensitivity of the Distribution Network. <span class="v">IEEE Access</span>, <span class="yr">2022</span>.</div>
-    <div class="pub">Yoo, Y., Jang, G., Lee, J., &amp; Jung, S. Stochastic forecast error estimation of high PV penetration system considering net-load/PV decoupling for microgrid operation. <span class="v">IET Renewable Power Generation</span>, <span class="yr">2022</span>.</div>
-    <div class="pub">Yoo, Y., Jang, G., &amp; Jung, S. Stochastic assessment of frequency support from wind power plants for power systems with high wind penetration. <span class="v">IET Renewable Power Generation</span>, <span class="yr">2022</span>.</div>
-    <div class="pub">Yoo, Y., et al. Development of practical allocation method for reactive power reference for wind farms through inner-voltage restriction. <span class="v">IET Generation, Transmission &amp; Distribution</span>, <span class="yr">2022</span>.</div>
-    <div class="pub">Yoo, Y., Jang, G., &amp; Jung, S. A Study on Sizing of Substation for PV With Optimized Operation of BESS. <span class="v">IEEE Access</span>, 8:214577–214585, <span class="yr">2020</span> (SCIE).</div>
-    <div class="pub">Yoo, Y., et al. Dispatchable Substation for Operation and Control of Renewable Energy Resources. <span class="v">Applied Sciences</span>, <span class="yr">2020</span> (SCIE).</div>
-    <div class="pub">Yoo, Y., et al. Modified reactive power allocation strategy for large-scale offshore wind turbine considering subsystem configuration. <span class="v">IET GTD</span>, 14(22):5135–5142, <span class="yr">2020</span> (SCIE).</div>
-
-    <p class="more">
-      <span data-ko>이 외 다수의 SCIE 저널 논문 및 공저 논문이 있습니다. 전체 목록은 별도 페이지로 정리할 수 있습니다.</span>
-      <span data-en>Additional SCIE journal papers and co-authored works are available; a full list can be provided on a separate page.</span>
-    </p>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section id="gallery">
-  <div class="wrap">
-    <h2><span data-ko>활동 사진</span><span data-en>Gallery</span></h2>
-    <p class="sub" data-ko>학회, 현장 견학, 연구실 일상.</p>
-    <p class="sub" data-en>Conferences, site visits, and lab life.</p>
-    <div class="grid gallery">
-      <div class="gitem"><img src="images/gallery/g1.jpg" alt="Lab group" loading="lazy"><div class="cap"><span data-ko>연구실 단체사진</span><span data-en>Lab group photo</span></div></div>
-      <div class="gitem"><img src="images/gallery/g2.jpg" alt="Lab outing" loading="lazy"><div class="cap"><span data-ko>봄 나들이</span><span data-en>Spring outing</span></div></div>
-      <div class="gitem"><img src="images/gallery/g3.jpg" alt="Site visit" loading="lazy"><div class="cap"><span data-ko>발전소 현장 견학</span><span data-en>Power plant site visit</span></div></div>
-      <div class="gitem"><img src="images/gallery/g4.jpg" alt="Group" loading="lazy"><div class="cap"><span data-ko>연구실 단체사진</span><span data-en>Lab group photo</span></div></div>
-      <div class="gitem"><img src="images/gallery/g5.jpg" alt="ICRERA 2024" loading="lazy"><div class="cap"><span data-ko>ICRERA 2024 (일본 나가사키) 발표</span><span data-en>ICRERA 2024, Nagasaki</span></div></div>
-      <div class="gitem"><img src="images/gallery/g6.jpg" alt="Lab life" loading="lazy"><div class="cap"><span data-ko>연구실 일상</span><span data-en>Lab life</span></div></div>
-      <div class="gitem"><img src="images/gallery/g7.jpg" alt="CPEEE 2026" loading="lazy"><div class="cap"><span data-ko>CPEEE 2026 (일본 오사카) 학회</span><span data-en>CPEEE 2026, Osaka</span></div></div>
-      <div class="gitem"><img src="images/gallery/g8.jpg" alt="Reservist training" loading="lazy"><div class="cap"><span data-ko>학생 예비군 훈련</span><span data-en>Student reservist training</span></div></div>
+    <h2><span data-ko>둘러보기</span><span data-en>Explore</span></h2>
+    <p class="sub" data-ko>연구실의 사람, 연구, 성과를 나눠 담았습니다.</p>
+    <p class="sub" data-en>Our people, research, and outcomes.</p>
+    <div class="grid explore">
+      <a class="card xcard" href="people.html">
+        <h3><span data-ko>구성원</span><span data-en>People</span></h3>
+        <p data-ko>지도교수, 석사과정 연구원, 졸업생.</p>
+        <p data-en>Principal investigator, master's students, and alumni.</p>
+        <div class="go"><span data-ko>보기 →</span><span data-en>View →</span></div>
+      </a>
+      <a class="card xcard" href="research.html">
+        <h3><span data-ko>연구 분야</span><span data-en>Research</span></h3>
+        <p data-ko>IBR 계통 연계, 확률론적 신재생 연계, 계통 해석·모델링.</p>
+        <p data-en>IBR integration, stochastic renewable integration, and system modeling.</p>
+        <div class="go"><span data-ko>보기 →</span><span data-en>View →</span></div>
+      </a>
+      <a class="card xcard" href="projects.html">
+        <h3><span data-ko>연구 과제</span><span data-en>Projects</span></h3>
+        <p data-ko>한전·KETEP·NRF 등과 함께하는 진행 중·최근 과제.</p>
+        <p data-en>Ongoing and recent projects with KEPCO, KETEP, NRF, and others.</p>
+        <div class="go"><span data-ko>보기 →</span><span data-en>View →</span></div>
+      </a>
+      <a class="card xcard" href="publications.html">
+        <h3><span data-ko>논문</span><span data-en>Publications</span></h3>
+        <p data-ko>주요 SCIE 저널 논문.</p>
+        <p data-en>Selected SCIE journal publications.</p>
+        <div class="go"><span data-ko>보기 →</span><span data-en>View →</span></div>
+      </a>
+      <a class="card xcard" href="gallery.html">
+        <h3><span data-ko>활동 사진</span><span data-en>Gallery</span></h3>
+        <p data-ko>학회, 현장 견학, 연구실 일상.</p>
+        <p data-en>Conferences, site visits, and lab life.</p>
+        <div class="go"><span data-ko>보기 →</span><span data-en>View →</span></div>
+      </a>
     </div>
   </div>
 </section>
@@ -379,14 +129,6 @@
   </div>
 </footer>
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-  function toggleLang(){
-    var html=document.documentElement;
-    var en = html.getAttribute('lang')==='en';
-    html.setAttribute('lang', en?'ko':'en');
-    document.getElementById('lang').textContent = en?'EN':'KO';
-  }
-</script>
+<script src="site.js"></script>
 </body>
 </html>

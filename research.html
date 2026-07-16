@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>연구 분야 · REGAL</title>
+<meta name="description" content="Research at the Renewable Energy Grid Analysis Lab (REGAL), Myongji University — IBR grid integration, stochastic renewable integration, power system analysis and modeling.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html">REGAL<small>Renewable Energy Grid Analysis Lab</small></a>
+    <nav class="menu-links">
+      <a class="link" href="index.html"><span data-ko>홈</span><span data-en>Home</span></a>
+      <a class="link" href="people.html"><span data-ko>구성원</span><span data-en>People</span></a>
+      <a class="link active" href="research.html"><span data-ko>연구</span><span data-en>Research</span></a>
+      <a class="link" href="projects.html"><span data-ko>프로젝트</span><span data-en>Projects</span></a>
+      <a class="link" href="publications.html"><span data-ko>논문</span><span data-en>Publications</span></a>
+      <a class="link" href="gallery.html"><span data-ko>활동</span><span data-en>Gallery</span></a>
+    </nav>
+    <button class="langbtn" id="lang" onclick="toggleLang()">EN</button>
+  </div>
+</header>
+
+<div class="pagehead">
+  <div class="wrap">
+    <h1><span data-ko>연구 분야</span><span data-en>Research</span></h1>
+    <p data-ko>주요 연구 관심사.</p>
+    <p data-en>Key research interests.</p>
+  </div>
+</div>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="wrap">
+    <div class="grid research">
+      <div class="card rc">
+        <div class="tag">IBR</div>
+        <h3><span data-ko>IBR 계통 연계 연구</span><span data-en>IBR Grid Integration Study</span></h3>
+        <p data-ko>인버터 기반 자원(IBR)의 계통 연계 영향 분석과 안정도 확보 전략.</p>
+        <p data-en>Impact analysis and stability strategies for inverter-based resource (IBR) grid integration.</p>
+      </div>
+      <div class="card rc">
+        <div class="tag">Stochastic</div>
+        <h3><span data-ko>확률론적 신재생 연계</span><span data-en>Stochastic Renewable Integration</span></h3>
+        <p data-ko>불확실성을 반영한 신재생에너지의 계통 연계 및 운영 평가.</p>
+        <p data-en>Stochastic integration and operational assessment of renewables under uncertainty.</p>
+      </div>
+      <div class="card rc">
+        <div class="tag">Stability</div>
+        <h3><span data-ko>계통 해석·모델링</span><span data-en>System Analysis &amp; Modeling</span></h3>
+        <p data-ko>안정도 평가를 위한 전력계통 해석과 모델링 기법 연구.</p>
+        <p data-en>Power-system analysis and modeling for stability assessment.</p>
+      </div>
+    </div>
+
+    <p class="seeall">
+      <a href="projects.html"><span data-ko>이 분야로 수행 중인 연구 과제 보기 →</span><span data-en>See the projects in these areas →</span></a>
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap row">
+    <div>
+      <strong>REGAL</strong> · <span data-ko>신재생 융합 계통 연구실 · 명지대학교 전기공학과</span><span data-en>Renewable Energy Grid Analysis Lab · Dept. of Electrical Engineering, Myongji University</span><br>
+      <span data-ko>이메일</span><span data-en>Email</span>: <a href="mailto:ytyoo@mju.ac.kr">ytyoo@mju.ac.kr</a> &nbsp;·&nbsp; Tel: +82-31-330-6366
+    </div>
+    <div>© <span id="year"></span> REGAL, Myongji University</div>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>

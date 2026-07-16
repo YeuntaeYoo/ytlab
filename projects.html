@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>연구 과제 · REGAL</title>
+<meta name="description" content="Research projects of the Renewable Energy Grid Analysis Lab (REGAL), Myongji University — KEPCO, KEPRI, KETEP, NRF, and KINS.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html">REGAL<small>Renewable Energy Grid Analysis Lab</small></a>
+    <nav class="menu-links">
+      <a class="link" href="index.html"><span data-ko>홈</span><span data-en>Home</span></a>
+      <a class="link" href="people.html"><span data-ko>구성원</span><span data-en>People</span></a>
+      <a class="link" href="research.html"><span data-ko>연구</span><span data-en>Research</span></a>
+      <a class="link active" href="projects.html"><span data-ko>프로젝트</span><span data-en>Projects</span></a>
+      <a class="link" href="publications.html"><span data-ko>논문</span><span data-en>Publications</span></a>
+      <a class="link" href="gallery.html"><span data-ko>활동</span><span data-en>Gallery</span></a>
+    </nav>
+    <button class="langbtn" id="lang" onclick="toggleLang()">EN</button>
+  </div>
+</header>
+
+<div class="pagehead">
+  <div class="wrap">
+    <h1><span data-ko>연구 과제</span><span data-en>Research Projects</span></h1>
+    <p data-ko>진행 중·최근 수행 과제.</p>
+    <p data-en>Ongoing and recent projects.</p>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="proj"><div class="t"><span data-ko>배전망 이력데이터를 활용한 수요·발전 예측 시나리오 및 자동화 알고리즘 개발</span><span data-en>Demand/generation forecasting scenarios and automation algorithms using distribution-grid historical data</span></div><div class="m">한국전력공사 (KEPCO) · 2025.12 – 2027.11</div></div>
+    <div class="proj"><div class="t"><span data-ko>GFM 인버터의 배전계통 도입 유효성 검토</span><span data-en>Feasibility study of grid-forming (GFM) inverter deployment in distribution systems</span></div><div class="m">한국전력공사 (KEPCO) · 2025.09 – 2027.05</div></div>
+    <div class="proj"><div class="t"><span data-ko>신뢰도 및 비용분석 기반 전원 MIX 최적화 알고리즘에 관한 연구</span><span data-en>Power-mix optimization algorithm based on reliability and cost analysis</span></div><div class="m">한국전력공사 전력연구원 (KEPRI) · 2024.08 – 2026.08</div></div>
+    <div class="proj"><div class="t"><span data-ko>분산에너지 계통접속 기반 그리드포밍 핵심기술 운영실증</span><span data-en>Operational demonstration of grid-forming core technology for distributed-energy grid connection</span></div><div class="m">한국에너지기술평가원 (KETEP) · 2023.04 – 2026.12</div></div>
+    <div class="proj"><div class="t"><span data-ko>IBR 합성관성의 빅데이터 기반 확률론적 평가 (전력계통 계획)</span><span data-en>Big-data-based stochastic assessment of synthetic inertia by IBR for power-system planning</span></div><div class="m">한국연구재단 (NRF) · 2022.06 – 2025.02</div></div>
+    <div class="proj"><div class="t"><span data-ko>분산형 재생에너지 시스템 개방형 통합 플랫폼 개발</span><span data-en>Development of an open integrated platform for distributed renewable-energy systems</span></div><div class="m">한국에너지기술평가원 (KETEP) · 2023.04 – 2025.12</div></div>
+    <div class="proj"><div class="t"><span data-ko>APR1400 원전 소내 전력계통 모델링 및 영향 평가</span><span data-en>Modeling and impact assessment of the on-site power system in the APR1400 nuclear power plant</span></div><div class="m">한국원자력안전기술원 (KINS) · 2022.04 – 2025.12</div></div>
+    <div class="proj"><div class="t"><span data-ko>인버터 기반 신재생 확대에 따른 송전계통 연계기준 대응 전략 연구</span><span data-en>Response strategy for transmission-grid interconnection standards under expanding inverter-based renewables</span></div><div class="m">한국전력 경영정책기초연구과제 · 2023.07 – 2024.04</div></div>
+
+    <p class="seeall">
+      <a href="publications.html"><span data-ko>과제 성과 논문 보기 →</span><span data-en>See the resulting publications →</span></a>
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap row">
+    <div>
+      <strong>REGAL</strong> · <span data-ko>신재생 융합 계통 연구실 · 명지대학교 전기공학과</span><span data-en>Renewable Energy Grid Analysis Lab · Dept. of Electrical Engineering, Myongji University</span><br>
+      <span data-ko>이메일</span><span data-en>Email</span>: <a href="mailto:ytyoo@mju.ac.kr">ytyoo@mju.ac.kr</a> &nbsp;·&nbsp; Tel: +82-31-330-6366
+    </div>
+    <div>© <span id="year"></span> REGAL, Myongji University</div>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>
